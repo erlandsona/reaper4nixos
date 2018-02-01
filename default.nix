@@ -19,7 +19,7 @@ let
   #       or
   #     sudo apt-get install fonts-cantarell
 
-  libPath = lib.makeLibraryPath [ alsaLib gcc.cc xlibs.libX11 xlibs.libXi gnome3.gtk ];
+  libPath = lib.makeLibraryPath [ alsaLib gcc.cc xlibs.libX11 xlibs.libXi ];
   reaper-drv = stdenv.mkDerivation {
     name = "reaper-drv";
     src = fetchurl {
@@ -45,6 +45,6 @@ let
   };
 in buildFHSUserEnv {
   name = "reaper";
-  targetPkgs = pkgs: [ reaper-drv ];
+  targetPkgs = pkgs: [ reaper-drv gnome3.gtk ];
   runScript = "reaper5";
 }
